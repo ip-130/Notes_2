@@ -12,12 +12,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="notes_is_empty"
-        android:gravity="center" />
+        android:gravity="center" />.
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvNotesList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical" />
+
 
 </FrameLayout>
