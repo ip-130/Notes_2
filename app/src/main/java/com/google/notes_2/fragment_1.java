@@ -5,6 +5,7 @@ import android.app.TimePickerDialog;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.text.format.DateUtils;
@@ -21,6 +22,10 @@ import java.util.Calendar;
 
 public class fragment_1 extends Fragment {
     TextView tvNoteDate;
+    EditText etText;
+    EditText etTitle;
+    Button timeButton;
+    Button dataButton;
     Calendar dateAndTime=Calendar.getInstance();
 
 
@@ -29,17 +34,23 @@ public class fragment_1 extends Fragment {
         super.onCreate(savedInstanceState);
         setInitialDateTime();
 
-
     }
 
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_1, container, false);
+        initView(view);
+        return view;
+    }
 
     //Метод получение пользовательских элементов по идентификатору
     public void initView(View view){
-        EditText etText = (EditText)view.findViewById(R.id.etText);
-        TextView tvNoteDate = (TextView)view.findViewById(R.id.tvNoteDate);
-        EditText etTitle = (EditText)view.findViewById(R.id.etTitle);
-        Button timeButton = (Button)view.findViewById(R.id.timeButton);
-        Button dataButton = (Button)view.findViewById(R.id.dateButton);
+        etText = (EditText)view.findViewById(R.id.etText);
+        tvNoteDate = (TextView)view.findViewById(R.id.tvNoteDate);
+        etTitle = (EditText)view.findViewById(R.id.etTitle);
+        timeButton = (Button)view.findViewById(R.id.timeButton);
+        dataButton = (Button)view.findViewById(R.id.dateButton);
     }
 
     // отображаем диалоговое окно для выбора даты
@@ -84,6 +95,4 @@ public class fragment_1 extends Fragment {
             setInitialDateTime();
         }
     };
-
-
 }
