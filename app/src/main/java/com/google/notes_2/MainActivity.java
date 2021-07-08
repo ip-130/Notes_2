@@ -5,24 +5,29 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.provider.ContactsContract;
+import android.text.format.DateUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.TextView;
+import android.widget.TimePicker;
+
+import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
-
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         initView();
-
-
-
     }
 
     //Метод получение пользовательских элементов по идентификатору
@@ -31,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
         Button btn_notes = findViewById(R.id.btn_notes);
         Button btn_exit = findViewById(R.id.btn_exit);
         Button btn_save_all = findViewById(R.id.save_all);
-
 
     }
 
@@ -51,13 +55,6 @@ public class MainActivity extends AppCompatActivity {
         frag2.commit();
     }
 
-    public void sharedPref(){
-        SharedPreferences prefs = getSharedPreferences("MyPref", MODE_PRIVATE);
-        String nameFirst = prefs.getString("etTitle", "sda");
-        String nameSecond = prefs.getString("tvNoteDate", "No name defined");
-        String nameThird = prefs.getString("tvNoteDate", "No name defined");
-        int idName = prefs.getInt("idName", 0);
-    }
 
     //Метод описывающий кнопку Exit в activity_main
     public  void onClick3(View view){
@@ -65,17 +62,10 @@ public class MainActivity extends AppCompatActivity {
         System.exit(0);
     }
 
+    //Метод описывающий кнопку Save в activity_main
     public  void onClick4(View view){
-                SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
-        SharedPreferences.Editor editor = pref.edit();
-        editor.putString("etTitle", "string_value");
-        editor.putString("tvNoteDate", "string_value");
-        editor.putString("etText", "string_value");
-
-        editor.apply();
 
     }
-
 
 
 }
