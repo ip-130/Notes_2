@@ -21,6 +21,7 @@ import java.util.Calendar;
 public class fragment_1 extends Fragment {
 
     public static final String ARG_NOTE = "note";
+    private static final String CURRENT_NOTE = null ;
 
     TextView tvNoteDate;
     EditText etText;
@@ -30,30 +31,38 @@ public class fragment_1 extends Fragment {
     View inflatedView = null;
     Calendar dateAndTime=Calendar.getInstance();
 
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_1, container, false);
-        public  void onClick4(View view){
-            this.inflatedView = inflater.inflate(R.id.save_all,container, false);
-            if(saveAll == null){
-                Log.d("debugCheck", "HeadFrag: saveAll is null");
-                return inflatedView;
-            }
-            saveAll.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    String headline = ((EditText) v.findViewById(R.id.etText)).getText().toString();
-                    ((TextView) v.findViewById(R.id.tvNoteDate)).setText(headline);
-                    ((EditText) v.findViewById(R.id.etTitle)).getText().toString();
-                }
-            });
-        }
+
+//        public void onClick4(View view)
+//        {
+//            this.inflatedView = inflater.inflate(R.id.save_all,container, false);
+//            if(saveAll == null){
+//                Log.d("debugCheck", "HeadFrag: saveAll is null");
+//                return inflatedView;
+//            }
+//            saveAll.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    String headline = ((EditText) v.findViewById(R.id.etText)).getText().toString();
+//                    ((TextView) v.findViewById(R.id.tvNoteDate)).setText(headline);
+//                    ((EditText) v.findViewById(R.id.etTitle)).getText().toString();
+//                }
+//            });
+//        }
         initView(view);
         setInitialDateTime();
         return view;
-        return inflatedView;
+//        return inflatedView;
     }
 
     //Метод получение пользовательских элементов по идентификатору
@@ -65,13 +74,6 @@ public class fragment_1 extends Fragment {
         rvNotesList = (Button)view.findViewById(R.id.rvNotesList);
     }
 
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-
-        //Save the fragment's state here
-    }
-
     // установка начальных даты и времени
     private void setInitialDateTime() {
         tvNoteDate.setText(DateUtils.formatDateTime(getContext(),
@@ -79,9 +81,5 @@ public class fragment_1 extends Fragment {
                 DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_SHOW_YEAR
                         | DateUtils.FORMAT_SHOW_TIME));
     }
-
-    //Метод описывающий кнопку Save в activity_main
-
-
 
 }

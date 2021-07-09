@@ -12,11 +12,16 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.format.DateUtils;
+import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import java.util.Calendar;
 
@@ -30,6 +35,38 @@ public class MainActivity extends AppCompatActivity {
         initView();
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.popup_menu, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Toast.makeText(this, "Selected Item: " +item.getTitle(), Toast.LENGTH_SHORT).show();
+        switch (item.getItemId()) {
+            case R.id.search_item:
+                // do your code
+                return true;
+            case R.id.upload_item:
+                // do your code
+                return true;
+            case R.id.copy_item:
+                // do your code
+                return true;
+            case R.id.print_item:
+                // do your code
+                return true;
+            case R.id.share_item:
+                // do your code
+                return true;
+            case R.id.bookmark_item:
+                // do your code
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
     //Метод получение пользовательских элементов по идентификатору
     public void initView() {
         Button btn_add = findViewById(R.id.btn_add);
@@ -38,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
         Button btn_save_all = findViewById(R.id.save_all);
 
     }
+
 
     //Метод описывающий кнопку Add в activity_main
     public void onClick1(View view){
@@ -66,6 +104,8 @@ public class MainActivity extends AppCompatActivity {
     public  void onClick4(View view){
 
     }
+
+
 
 
 }
